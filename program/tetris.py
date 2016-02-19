@@ -1,89 +1,5 @@
 import sys
-class Tetrimino(object):
-
-    """Describe each tetrimino."""
-    title = 'X'
-    grids = [[]]
-    arr = []
-
-    def __init__(self):
-        from operator import sub
-        self.arr = []
-        for i in range(len(self.grids)):
-            arr = []
-            for x in range(len(self.grids[i])):
-                for y in range(len(self.grids[i][x])):
-                    if self.grids[i][x][y] == '1':
-                        arr.append((x,y))
-            # convert first element as (0,0)
-            (dx, dy) = arr[0]
-            for i in range(len(arr)):
-                arr[i] = tuple(map(sub, arr[i], (dx, dy)))
-            self.arr.append(arr)
-
-class T(Tetrimino):
-
-    """Generate shape T"""
-
-    def __init__(self):
-        self.title = 'T'
-        self.grids = [
-            [
-                "111",
-                "010",
-            ],
-            [
-                "01",
-                "11",
-                "01",
-            ],
-            [
-                "010",
-                "111",
-            ],
-            [
-                "10",
-                "11",
-                "10",
-            ],
-        ]
-        Tetrimino.__init__(self)
-
-class O(Tetrimino):
-
-    """Generate shape O"""
-
-    def __init__(self):
-        self.title = 'O'
-        self.grids = [
-            [
-                "11",
-                "11",
-            ],
-        ]
-        Tetrimino.__init__(self)
-
-class TetriminoFactory(object):
-
-    """Generate each tetrimino."""
-
-    @staticmethod
-    def make(type):
-        """Generate all shape of type.
-
-        :type: TSZILJO
-        :returns: One of Tetrimino
-
-        """
-        if (type == 'T'):
-            return T()
-        elif (type == 'O'):
-            return O()
-        else:
-            raise Exception("No such shape %s" %(type))
-
-TYPE_SET = "TSZILJO"
-
+from module import Tetrimino, TetriminoFactory, T, S, Z, I, L, J, O, TYPE_SET
 def print_board(b):
     """print board
 
@@ -105,7 +21,7 @@ def print_path(path):
 
     """
     for i in range(len(path)):
-        print i, path[i][0]
+        print "Step", i, path[i][0]
         for row in path[i][1]:
             print row
 
