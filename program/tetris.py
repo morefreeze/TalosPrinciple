@@ -133,6 +133,7 @@ type set is [%s]""" %(sys.argv[0], TYPE_SET)
 
     if height*width != cnt:
         print "this set [%s] can't be solved in %d x %d" %(pics, height, width)
+        exit(3)
 
     path = []
     if dfs(b, pics, path):
