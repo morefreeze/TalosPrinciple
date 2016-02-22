@@ -1,3 +1,7 @@
+""" NONE_PIC means some part of piese have been placed here.
+"""
+NONE_PIC = '*'
+
 class Tetrimino(object):
 
     """Describe each tetrimino."""
@@ -28,27 +32,117 @@ class TetriminoFactory(object):
     def make(type):
         """Generate all shape of type.
 
-        :type: TSZILJO
+        :type: IJLOSTZ
         :returns: One of Tetrimino
 
         """
         type = type.upper()
-        if (type == 'T'):
-            return T()
-        elif (type == 'S'):
-            return S()
-        elif (type == 'Z'):
-            return Z()
-        elif (type == 'I'):
+        if (type == 'I'):
             return I()
-        elif (type == 'L'):
-            return L()
         elif (type == 'J'):
             return J()
+        elif (type == 'L'):
+            return L()
         elif (type == 'O'):
             return O()
+        elif (type == 'S'):
+            return S()
+        elif (type == 'T'):
+            return T()
+        elif (type == 'Z'):
+            return Z()
         else:
             raise Exception("No such shape %s" %(type))
+
+class I(Tetrimino):
+
+    """Generate shape I"""
+
+    def __init__(self):
+        self.title = 'I'
+        self.grids = [
+            [
+                "1111",
+            ],
+            [
+                "1",
+                "1",
+                "1",
+                "1",
+            ],
+        ]
+        Tetrimino.__init__(self)
+
+class J(Tetrimino):
+
+    """Generate shape J"""
+
+    def __init__(self):
+        self.title = 'J'
+        self.grids = [
+            [
+                " 1",
+                " 1",
+                "11",
+            ],
+            [
+                "111",
+                "  1",
+            ],
+        ]
+        Tetrimino.__init__(self)
+
+class L(Tetrimino):
+
+    """Generate shape L"""
+
+    def __init__(self):
+        self.title = 'L'
+        self.grids = [
+            [
+                "1",
+                "1",
+                "11",
+            ],
+            [
+                "111",
+                "1",
+            ],
+        ]
+        Tetrimino.__init__(self)
+
+class O(Tetrimino):
+
+    """Generate shape O"""
+
+    def __init__(self):
+        self.title = 'O'
+        self.grids = [
+            [
+                "11",
+                "11",
+            ],
+        ]
+        Tetrimino.__init__(self)
+
+class S(Tetrimino):
+
+    """Generate shape S"""
+
+    def __init__(self):
+        self.title = 'S'
+        self.grids = [
+            [
+                " 11",
+                "11",
+            ],
+            [
+                "1",
+                "11",
+                " 1",
+            ],
+        ]
+        Tetrimino.__init__(self)
 
 class T(Tetrimino):
 
@@ -78,25 +172,6 @@ class T(Tetrimino):
         ]
         Tetrimino.__init__(self)
 
-class S(Tetrimino):
-
-    """Generate shape S"""
-
-    def __init__(self):
-        self.title = 'S'
-        self.grids = [
-            [
-                " 11",
-                "11",
-            ],
-            [
-                "1",
-                "11",
-                " 1",
-            ],
-        ]
-        Tetrimino.__init__(self)
-
 class Z(Tetrimino):
 
     """Generate shape Z"""
@@ -116,78 +191,5 @@ class Z(Tetrimino):
         ]
         Tetrimino.__init__(self)
 
-class I(Tetrimino):
-
-    """Generate shape I"""
-
-    def __init__(self):
-        self.title = 'I'
-        self.grids = [
-            [
-                "1111",
-            ],
-            [
-                "1",
-                "1",
-                "1",
-                "1",
-            ],
-        ]
-        Tetrimino.__init__(self)
-
-class L(Tetrimino):
-
-    """Generate shape L"""
-
-    def __init__(self):
-        self.title = 'L'
-        self.grids = [
-            [
-                "1",
-                "1",
-                "11",
-            ],
-            [
-                "111",
-                "1",
-            ],
-        ]
-        Tetrimino.__init__(self)
-
-class J(Tetrimino):
-
-    """Generate shape J"""
-
-    def __init__(self):
-        self.title = 'J'
-        self.grids = [
-            [
-                " 1",
-                " 1",
-                "11",
-            ],
-            [
-                "111",
-                "  1",
-            ],
-        ]
-        Tetrimino.__init__(self)
-
-class O(Tetrimino):
-
-    """Generate shape O"""
-
-    def __init__(self):
-        self.title = 'O'
-        self.grids = [
-            [
-                "11",
-                "11",
-            ],
-        ]
-        Tetrimino.__init__(self)
-
-
-TYPE_SET = "TSZILJO"
-
+TYPE_SET = "IJLOSTZ"
 

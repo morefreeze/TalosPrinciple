@@ -1,5 +1,5 @@
 import sys
-from module import Tetrimino, TetriminoFactory, T, S, Z, I, L, J, O, TYPE_SET
+from module import Tetrimino, TetriminoFactory, I, J, L, O, S, T, Z, TYPE_SET, NONE_PIC
 def print_board(b):
     """print board
 
@@ -36,10 +36,6 @@ def dfs(b, pics, path):
     :returns: boolean
 
     """
-    # if len(filter(lambda c: c == 'X', pics)) == 4:
-        # print '='*20
-        # print_board(b)
-        # print pics
     found = False
     next_x, next_y = 0,0
     for i in range(len(b)):
@@ -56,13 +52,13 @@ def dfs(b, pics, path):
     for i in range(len(pics)):
         pic = pics[i]
         # have tried or before tried
-        if pic == 'X' or pic in tried:
+        if pic == NONE_PIC or pic in tried:
             continue
         tried[pic] = 1
         tetrimino = TetriminoFactory.make(pic)
         for j in range(len(tetrimino.arr)):
             arr = tetrimino.arr[j]
-            pics[i] = 'X'
+            pics[i] = NONE_PIC
             if try_place(b, next_x, next_y, arr, pic):
                 path.append((pic, tetrimino.grids[j]))
                 if dfs(b, pics, path):
@@ -132,6 +128,7 @@ type set is [%s]""" %(sys.argv[0], TYPE_SET)
     cnt = 0
     for c in pics:
         if c in TYPE_SET:
+            # Because each tetrimino length is 4
             cnt += 4
 
     if height*width != cnt:
